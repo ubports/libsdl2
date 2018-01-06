@@ -1,13 +1,9 @@
-.TH sdl2-config 1 "2012-02-20" "SDL 2.0"
+.TH sdl2-config 1 "2013-07-27" "SDL 2.0"
 .SH NAME
 sdl2-config \- script to get information about the installed version of SDL
 .SH SYNOPSIS
 .B sdl2-config
-[ --prefix=
-.IR DIR ]
-[ --exec-prefix=
-.IR DIR ]
-[ --version ] [ --libs | --library-libs | --plugin-libs ] [ --cflags ]
+[--prefix=[\fIDIR\fR]] [--exec-prefix=[\fIDIR\fR]] [--version] [--cflags] [--libs] [--static-libs]
 .SH DESCRIPTION
 .B sdl2-config
 is a tool that is used to configure and determine the compiler and linker
@@ -20,13 +16,14 @@ included with SDL.
 Print the compiler flags that are necessary to compile a program or library
 that uses SDL.
 .TP
-.BI --exec-prefix= DIR
-If specified, use
-.I DIR
-instead of the installation exec prefix that SDL was build with when
-computing the output for the --cflags, --libs, --library-libs, and
---plugin-libs options.  This option must be specified before any of the
---cflags, --libs, --library-libs, and --plugin-libs options.
+.BI --exec-prefix\fR[=\fIDIR\fR]
+If \fIDIR\fR is not specified, print the exec prefix of the current SDL
+installation.
+.IP
+If \fIDIR\fR is specified, use it instead of the installation exec prefix that
+SDL was built with when computing the output for the --cflags, --libs and
+--static-libs options.  This option must be specified before any of the options
+--cflags, --libs and --static-libs.
 .TP
 .B --libs
 Print the linker flags that are necessary to link a program that uses SDL.
@@ -34,27 +31,14 @@ Print the linker flags that are necessary to link a program that uses SDL.
 .B --static-libs
 Print the linker flags that are necessary to statically link a program that uses SDL.
 .TP
-.B --library-libs
-Print the linker flags that are necessary to link a library that uses SDL.
-(This excludes any static objects required for linking, since these must be
-linked only by executable programs.)
-.TP
-.B --plugin-libs
-Print the linker flags that are necessary to link an SDL-using object that
-is to be accessed via
-.IR dlopen (3).
-This may include static objects with PIC symbol information.  This option
-should
-.B not
-be used for ordinary shared libraries or standalone applications.
-.TP
-.BI --prefix= DIR
-If specified, use PREFIX instead of the installation prefix that SDL was
-built with when computing the output for the --cflags, --libs,
---library-libs, and --plugin-libs options.  This option is also used for
-the exec prefix if --exec-prefix was not specified.  This option must be
-specified before any of the --cflags, --libs, --library-libs, and
---plugin-libs options.
+.BI --prefix\fR[=\fIDIR\fR]
+If \fIDIR\fR is not specified, print the prefix of the current SDL installation.
+.IP
+If \fIDIR\fR is specified, use it instead of the installation prefix that SDL
+was built with when computing the output for the --cflags, --libs and
+--static-libs options.  This option is also used for the exec prefix if
+--exec-prefix was not specified.  This option must be specified before any of
+the options --cflags, --libs and --static-libs.
 .TP
 .B --version
 Prints the currently installed version of SDL on standard output.
@@ -69,18 +53,10 @@ gcc -o my_app $(sdl2-config --libs) main.o util.o
 is how you might use
 .B sdl2-config
 to link compiled objects into an executable program.
-.TP
-gcc -o libSDL_nifty-2.0.so.0.0.1 $(sdl --library-libs) read.o write.o munge.o
-is how you might use
-.B sdl2-config
-to link compiled objects into a shared library.
-.TP
-gcc -o libnifty_xmms.so $(sdl --plugin-libs) stream.o blit.o deinterlace.o
-is how you might use
-.B sdl2-config
-to link compiled objects into a plugin for use by another program.
 .SH AUTHOR
 The Simple DirectMedia Layer (SDL) library was written by Sam Lantinga.
 .PP
 This manual page was written by Branden Robinson, originally for Progeny
 Linux Systems, Inc., and the Debian Project.
+.br
+Updated in 2013 by Manuel A. Fernandez Montecelo <mafm@debian.org>.
