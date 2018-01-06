@@ -1,6 +1,6 @@
-libsdl2 (2.0.4+dfsg1-3ubports3) UNRELEASED; urgency=medium
+libsdl2 (2.0.5+ubports) xenial; urgency=medium
 
-  * Remove mir patch 
+  * Update sdl to rev 10361
 
  -- Marius Gripsgard <marius@ubports.com>  Thu, 07 Dec 2017 06:37:47 +0100
 
