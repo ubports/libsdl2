@@ -11,7 +11,7 @@ confflags = --disable-rpath --enable-sdl-dlopen --disable-loadso \
             --disable-x11-shared --disable-video-directfb \
             --enable-video-opengles \
             --enable-video-wayland --disable-wayland-shared \
-            --enable-video-mir --disable-mir-shared
+            --enable-video-mir --disable-mir-shared --disable-video-opengl
 
 ifeq ($(DEB_HOST_ARCH_CPU),powerpc)
   confflags += --disable-altivec
