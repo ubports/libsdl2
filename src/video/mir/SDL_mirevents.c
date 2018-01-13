@@ -283,6 +283,10 @@ MIR_HandleSurface(MirSurfaceEvent const* surface_event, SDL_Window* window)
     }
 }
 
+static void
+MIR_HandleClose(SDL_Window* window) {
+    SDL_SendWindowEvent(window, SDL_WINDOWEVENT_CLOSE, 0, 0);
+}
 void
 MIR_HandleEvent(MirSurface* surface, MirEvent const* ev, void* context)
 {
@@ -299,6 +303,9 @@ MIR_HandleEvent(MirSurface* surface, MirEvent const* ev, void* context)
                 break;
             case (mir_event_type_surface):
                 MIR_HandleSurface(MIR_mir_event_get_surface_event(ev), window);
+                break;
+            case (mir_event_type_close_surface):
+                MIR_HandleClose(window);
                 break;
             default:
                 break;
